@@ -18,48 +18,33 @@ public class DAOIMPL implements DAO {
         this.entityManager = entityManager;
     }
 
-    @Override
-    @Transactional
-    public void add(Employees employees) {
-        entityManager.persist(employees);
-    }
-
-    @Override
-    public Employees read(int id) {
-        return entityManager.find(Employees.class,id);
-    }
 
     @Override
     @Transactional
-    public Employees update(int id, String firstName, String lastName, String email) {
-        Employees emp=entityManager.find(Employees.class,id);
-        if(emp!=null && firstName!="" ){
-            emp.setFirstName(firstName);
-        }else if(lastName!=""){
-            emp.setLastName(lastName);
-        }else if(email!=""){
-            emp.setEmail(email);
-        }else{
-            System.out.println("No change as you can see below");
-        }
-
-        entityManager.merge(emp);
-        return emp;
-
-    }
-
-    @Override
-    @Transactional
-    public void delete(int id) {
-        Employees emp=entityManager.find(Employees.class,id);
-        entityManager.remove(emp);
-    }
-
-    @Override
     public List<Employees> readAll() {
        TypedQuery<Employees> theQuery= entityManager.createQuery("FROM Employees",Employees.class);
        List<Employees> employees=theQuery.getResultList();
         return employees;
+    }
+
+    @Override
+    @Transactional
+    public Employees save(Employees employees) {
+        Employees emp=entityManager.merge(employees);
+        return emp;
+    }
+
+    @Override
+    public Employees findById(int id) {
+        Employees emp=entityManager.find(Employees.class,id);
+        return emp;
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(int id) {
+        Employees emp= findById(id);
+        entityManager.remove(emp);
     }
 
 
