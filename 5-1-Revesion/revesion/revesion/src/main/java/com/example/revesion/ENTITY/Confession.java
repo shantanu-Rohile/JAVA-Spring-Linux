@@ -13,9 +13,6 @@ public class Confession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="user_id")
-    private int UserId;
-
     @Column(name="content")
     private String content;
 
@@ -31,5 +28,7 @@ public class Confession {
     @Column(name="is_active")
     private Status status;
 
+    @ManyToOne
+    private User UserId;
 
 }
