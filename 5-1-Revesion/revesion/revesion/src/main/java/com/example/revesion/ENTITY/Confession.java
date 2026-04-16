@@ -1,6 +1,7 @@
 package com.example.revesion.ENTITY;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -11,12 +12,14 @@ public class Confession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "confession_id")
     private int id;
 
     @Column(name="content")
     private String content;
 
-    @Column(name="created_at")
+    @Column(name="created_at",updatable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     private enum Status{
@@ -29,6 +32,6 @@ public class Confession {
     private Status status;
 
     @ManyToOne
-    private User UserId;
-
+    @JoinColumn(name = "user_id")
+    private User user;
 }

@@ -1,7 +1,6 @@
 package com.example.revesion.REST;
 
 
-import com.example.revesion.DAO.DaoUser;
 import com.example.revesion.ENTITY.User;
 import com.example.revesion.SERVICE.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class FunRestController {
+public class UserController {
     private UserService service;
     @Autowired
-    public void FunRestController(UserService service) {
+    public void UserController(UserService service) {
         this.service = service;
     }
 
