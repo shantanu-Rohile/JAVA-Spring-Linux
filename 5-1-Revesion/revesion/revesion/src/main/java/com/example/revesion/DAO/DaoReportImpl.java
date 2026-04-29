@@ -16,10 +16,8 @@ public class DaoReportImpl implements DaoReport{
     @Autowired
     private EntityManager em;
     private JsonMapper jsonMapper;
-    private DaoReport dao;
-    public DaoReportImpl(EntityManager em, DaoReport dao){
+    public DaoReportImpl(EntityManager em,JsonMapper jsonMapper){
         this.em=em;
-        this.dao=dao;
         this.jsonMapper = jsonMapper;
     }
 
@@ -52,7 +50,7 @@ public class DaoReportImpl implements DaoReport{
         }
 
         Report repo=jsonMapper.updateValue(temp,patchBody);
-        return dao.save(repo);
+        return save(repo);
     }
 
     @Override
@@ -67,4 +65,5 @@ public class DaoReportImpl implements DaoReport{
         em.remove(report);
         return "Report is removed successfully";
     }
+
 }

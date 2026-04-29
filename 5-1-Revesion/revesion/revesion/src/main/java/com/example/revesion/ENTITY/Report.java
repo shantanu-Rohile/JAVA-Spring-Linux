@@ -48,4 +48,8 @@ public class Report {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToOne
+    @JoinColumn(name="confession_id")
+    private Confession confession;
 }

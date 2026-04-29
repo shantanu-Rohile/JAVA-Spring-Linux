@@ -43,7 +43,6 @@ public class DaoUserImpl implements DaoUser {
     public String update(int userid, User user) {
         User u =entityManager.find(User.class, userid);
         u.setUsername(user.getUsername());
-        u.setRole(user.getRole());
         User u1=entityManager.merge(u);
         return "User updated successfully";
     }

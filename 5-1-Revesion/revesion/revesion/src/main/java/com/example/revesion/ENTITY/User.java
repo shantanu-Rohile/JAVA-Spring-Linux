@@ -21,24 +21,7 @@ public class User {
         this.username = username;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
     @Column(name = "username")
     private String username;
 
-    private enum Role{
-        member,
-        admin,
-        developer
-    }
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private Role role;
 }
