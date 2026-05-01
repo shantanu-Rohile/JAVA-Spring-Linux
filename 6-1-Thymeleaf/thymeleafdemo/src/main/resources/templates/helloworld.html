@@ -2,8 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf Demo</title>
+    <link rel="stylesheet" href="../static/css/demo.css">
 </head>
 <body>
-<p th:text="'Here the time is given : ' + ${theDate}"></p>
+Student Name : <span th:text="${param.name}"/>
+<br> <br>
+Message is : <span th:text="${message}"/>
 </body>
 </html>
+
+
+
+
+
