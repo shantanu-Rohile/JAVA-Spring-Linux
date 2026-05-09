@@ -7,6 +7,13 @@
 <form th:action="@{/processStudentForm}" th:object="${Student}" method="POST">
     First Name: <input type="text" th:field="*{firstName}" />
     Last Name: <input type="text" th:field="*{lastName}" />
+    <select th:field="*{country}">
+       <option th:each=" theCountry: ${countries}" th:value="${theCountry}" th:text="${theCountry}"/>
+    </select>
+    <br>
+    <br>
+    Languages preferred by use :
+     <input type="radio" th:field="*{language}" th:each="theLanguage : ${languages}" th:value="${theLanguage}" th:text="${theLanguage}" />
     <button type="submit">Submit</button>
 </form>
 </body>
