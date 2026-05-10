@@ -1,0 +1,40 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        Employee Directory
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h3>
+            Employee Directory
+        </h3>
+        <hr>
+        <a th:href="@{/employee/add}" class="btn btn-primary btn-sm mb-3">Add</a>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr th:each="theEmployee:${employees}">
+                    <td th:text="${theEmployee.firstName}"></td>
+                    <td th:text="${theEmployee.lastName}"></td>
+                    <td th:text="${theEmployee.email}"></td>
+                    <td><a th:href="@{/employee/showUpdateForm(employeeId=${theEmployee.id})}" class="btn btn-primary btn-sm mb-3">Update</a></td>
+                    <td><a th:href="@{/employee/delete(employeeId=${theEmployee.id})}" class="btn btn-warning btn-sm mb-3">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
